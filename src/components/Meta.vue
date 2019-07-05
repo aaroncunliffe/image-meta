@@ -32,6 +32,7 @@
           placeholder="Choose a file..."
           drop-placeholder="Drop file here..."
           @change="parseMeta"
+          accept="image/*"
         ></b-form-file>
       </b-col>
     </b-row>
