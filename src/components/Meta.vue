@@ -4,13 +4,14 @@
       <b-col>
         <div class="pt-4 pb-2">
           <p>
-            Upload your image to see all of the metadata it contains,
-            all processing is done directly in your browser so the image is not transmitted
+            Upload your image to see some of the useful metadata it contains,
+            all processing is done directly in the browser so the image is not transmitted or stored.
           </p>
 
           <p class="mb-0">
-            Exif data may be found in compressed JPEG images and may contain various pieces of information such as
-            GPS data, lens information or camera setting information
+            Exif data may be found in compressed JPEG images and may contain various pieces of information such as;
+            GPS data, lens information, camera settings used, editing software, etc. See more information 
+            <a href="https://en.wikipedia.org/wiki/Exif"> here</a>.
           </p>
         </div>
       </b-col>

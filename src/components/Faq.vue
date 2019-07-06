@@ -4,10 +4,11 @@
       <b-col class="pt-4">
         <h5>Information:</h5>
         <p>
-          As someone that is into photography it is interesting to review images taken and be able to see the the
-          hidden information to see what lens and settings were used to take the image and it is also a great opportunity for a project.
-          this makes use of an npm package that I created:
+          As someone that is interested in photography it is sometimes useful to review images taken and be able to see the the
+          hidden information such as the camera settings and lens that was used to take the image and GPS coordinates.
+          
         </p>
+        <p class="mb-0">This site makes use of an npm package that I created:</p>
       </b-col>
     </b-row>
 
