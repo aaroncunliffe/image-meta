@@ -36,7 +36,7 @@
     <b-row>
       <b-col md="8" offset-md="2">
         <b-form-file
-          v-if="!Boolean(image)"
+          v-if="!loading && !Boolean(image)"
           placeholder="Choose a file..."
           drop-placeholder="Drop file here..."
           @change="loadFromFileInput"
@@ -51,7 +51,7 @@
     <!-- URL Input -->
     <b-row>
       <b-col md="8" offset-md="2">
-        <b-input-group class="mt-3" v-if="!Boolean(image)">
+        <b-input-group class="mt-3" v-if="!loading && !Boolean(image)">
           <b-form-input :state="urlInputState" v-model="url" placeholder="URL to image"></b-form-input>
           <b-input-group-append>
             <b-btn @click="loadFromURL" class="submit-button">Submit</b-btn>
