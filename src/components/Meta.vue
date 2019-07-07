@@ -147,7 +147,7 @@
 
         <b-col cols="6">
           <h5>
-            <u>Camera &amp; Lens information</u>
+            <u>Camera &amp; Lens Info</u>
           </h5>
 
           <div v-if="metadata.OwnerName != undefined" class="group">
