@@ -2,7 +2,7 @@
   <b-container>
     <b-row>
       <b-col class="pt-4">
-        <h5>Information:</h5>
+        <h5>Project Information:</h5>
         <p>
           As someone that is interested in photography it is sometimes useful to review images taken and be able to see the the
           hidden information such as the camera settings and lens that was used to take the image and GPS coordinates.
