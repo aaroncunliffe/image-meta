@@ -350,6 +350,9 @@ export default {
       this.metadata = null;
       this.image = null;
       this.file = null;
+      this.url = '';
+      this.fileInputState = null;
+      this.urlInputState = null;
     },
     imageURLToBlob(url, callback) {
 
