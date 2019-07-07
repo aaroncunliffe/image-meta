@@ -323,9 +323,16 @@ export default {
         let binary = new DataView(arrayBuffer);
 
         // Load the image into the library
-        let meta = new ImageMeta(binary, this.debug);
-        let data = meta.data();
-        this.metadata = meta.data();
+        try{
+          let meta = new ImageMeta(binary, this.debug);
+          let data = meta.data();
+          this.metadata = meta.data();
+        } catch(e) { 
+          // Catch exceptions from the library
+          this.loading = false;
+          alert(e);
+          return;
+        }
 
         this.loadImagePreview(file);
       };
@@ -336,7 +343,7 @@ export default {
 
       imageReader.onload = () => {
         this.image = imageReader.result;
-        this.loading = false; //cancel loading icon
+        this.loading = false; // Cancel loading icon
       };
     },
     reset() {
@@ -353,7 +360,14 @@ export default {
         .then(response => {
           callback(response.data);
         })
-        .catch(err => alert('Invalid format'));
+        .catch(err => {
+            if(err.request.status == 404) {
+              alert('404: Not found - please check the URL is correct and try again')
+              return;
+            } else {
+              alert('There has been an error fetching the image');
+            }
+        });
     }
   }
 };
