@@ -186,7 +186,7 @@
           </div>
         </b-col>
 
-        <b-col cols="6" v-if="metadata.GPSLatitude != undefined">
+        <b-col cols="6" v-if="metadata.GPSInfo != undefined">
           <h5>
             <u>GPS Info</u>
           </h5>
