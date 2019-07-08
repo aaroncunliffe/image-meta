@@ -111,7 +111,7 @@
 
         <b-col cols="6">
           <h5>
-            <u>Exposure Info</u>
+            <u>Settings and Exposure</u>
           </h5>
 
           <div v-if="metadata.ExposureTime != undefined" class="group">
@@ -127,6 +127,16 @@
           <div v-if="metadata.ISO != undefined" class="group">
             <div class="key">ISO:</div>
             <div class="value">{{metadata.ISO}}</div>
+          </div>
+
+          <div v-if="metadata.FocalLength != undefined" class="group">
+            <div class="key">Focal Length:</div>
+            <div class="value">{{metadata.FocalLength}}mm</div>
+          </div>
+
+          <div v-if="metadata.FocalLengthIn35mmFormat != undefined" class="group">
+            <div class="key">Full Frame Focal Length:</div>
+            <div class="value">{{metadata.FocalLengthIn35mmFormat}}mm</div>
           </div>
 
           <div v-if="metadata.ExposureMode != undefined" class="group">
@@ -147,7 +157,7 @@
 
         <b-col cols="6">
           <h5>
-            <u>Camera &amp; Lens Info</u>
+            <u>Camera &amp; Lens</u>
           </h5>
 
           <div v-if="metadata.OwnerName != undefined" class="group">
