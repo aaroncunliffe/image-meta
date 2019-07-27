@@ -1,29 +1,17 @@
-# imagemetadata-site
+# ImageMeta
 
-## Project setup
-```
-npm install
-```
+Hosted on a subdomain of my site: [imagemeta.aaroncunliffe.dev](https://imagemeta.aaroncunliffe.dev)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+This is the site that demos my **image-meta-js** npm package: [github](https://github.com/aaroncunliffe/image-meta-js), [npm](https://www.npmjs.com/package/image-meta-js).
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Just a very basic site that shows off some of the functionality of the library. Images can be uploaded or submitted via a URL, the metadata is parsed parsed directly in the browser and displayed in a clean, human readable format.
 
-### Run your tests
-```
-npm run test
-```
+## Built With
 
-### Lints and fixes files
-```
-npm run lint
-```
+* [Vue.js](https://vuejs.org/)
+* [bootstrap-vue](https://bootstrap-vue.js.org/)
+* [axios](https://github.com/axios/axios)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## License
+
+This project is licensed under the MIT License
