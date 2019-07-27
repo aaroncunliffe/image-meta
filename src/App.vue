@@ -7,7 +7,7 @@
     </b-navbar>
 
     <Meta />
-    <Faq />
+    <Info />
 
     <div class="footer">
       <b-container>
@@ -23,13 +23,13 @@
 
 <script>
 import Meta from "./components/Meta.vue";
-import Faq from "./components/Faq.vue";
+import Info from "./components/Info.vue";
 
 export default {
   name: "app",
   components: {
     Meta,
-    Faq
+    Info
   }
 };
 </script>

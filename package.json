@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
-    "bootstrap-vue": "^2.0.0-rc.25",
+    "bootstrap-vue": "^2.0.0-rc.27",
     "core-js": "^2.6.5",
     "image-meta-js": "git+ssh://git@github.com/aaroncunliffe/image-meta-js.git",
     "vue": "^2.6.10"
@@ -18,8 +18,8 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.2",
     "@vue/cli-plugin-eslint": "^3.9.2",
-    "@vue/cli-service": "^3.9.2",
-    "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/cli-service": "^3.9.3",
+    "@vue/eslint-config-airbnb": "^4.0.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",

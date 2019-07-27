@@ -5,8 +5,10 @@
         <h5>Project Information:</h5>
         <p>
           As someone that is interested in photography it is sometimes useful to review images taken and be able to see the
-          hidden information such as the camera settings and lens that was used to take the image and GPS coordinates.
-          
+          hidden information such as the camera settings and lens that was used to take the image or GPS coordinates.
+        </p>
+        <p>
+          Full library debug output can be found in the browser console
         </p>
         <p class="mb-0">This site makes use of an npm package that I created:</p>
       </b-col>
@@ -42,7 +44,7 @@
 
 <script>
 export default {
-  name: "Faq",
+  name: "Info",
   data: function() {
     return {};
   },
