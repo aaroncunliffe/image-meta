@@ -335,7 +335,6 @@ export default {
         // Load the image into the library
         try{
           let meta = new ImageMeta(binary, this.debug);
-          let data = meta.data();
           this.metadata = meta.data();
         } catch(e) { 
           // Catch exceptions from the library
@@ -381,8 +380,8 @@ export default {
               alert('There has been an error fetching the image');
             }
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
