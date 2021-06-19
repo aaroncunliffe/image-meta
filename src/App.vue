@@ -1,32 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+      <b-navbar type="dark" class="justify-content-center">
+      <b-navbar variant="faded" type="light">
+        <b-navbar-brand tag="h1" class="mb-0">ImageMeta</b-navbar-brand>
+      </b-navbar>
+    </b-navbar>
+
     <router-view/>
+
+    <br/>
+
+    <div class="footer">
+      <b-container>
+        <b-row>
+          <b-col>
+            <p>Created by <a href="https://aaroncunliffe.dev">Aaron Cunliffe</a></p>
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
+
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
