@@ -265,15 +265,15 @@
     <b-row>
       <b-col>
         <b-btn @click="loadExample(1)" class="btn btn-default mr-2">
-          <!-- <i class="fab fa-npm fa-fw"></i> -->
+          <img hidden src="@/assets/images/example-1.jpg" />
           <span class="button-text">Example 1 - Camera</span>
         </b-btn>
         <b-btn @click="loadExample(2)" class="btn btn-default mr-2">
-          <!-- <i class="fab fa-npm fa-fw"></i> -->
+          <img hidden src="@/assets/images/example-2.jpg" />
           <span class="button-text">Example 2 - Drone</span>
         </b-btn>
         <b-btn @click="loadExample(3)" class="btn btn-default mr-2">
-          <!-- <i class="fab fa-npm fa-fw"></i> -->
+          <img hidden src="@/assets/images/example-3.jpg" />
           <span class="button-text">Example 3 - Phone with GPS</span>
         </b-btn>
       </b-col>
