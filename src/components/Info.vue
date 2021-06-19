@@ -36,24 +36,21 @@
           <i class="fab fa-github-square fa-fw"></i>
           <span class="button-text">Github</span>
         </a>
-        
+
       </b-col>
     </b-row>
   </b-container>
 </template>
 
-<script>
-export default {
-  name: "Info",
-  data: function() {
-    return {};
-  },
-  methods: {},
-  updated() {}
-};
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+
+@Component
+export default class Info extends Vue {
+}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 img {
   max-width: 60%;
 }

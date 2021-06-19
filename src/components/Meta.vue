@@ -41,7 +41,7 @@
           drop-placeholder="Drop file here..."
           @change="loadFromFileInput"
           accept="image/jpeg"
-          :state="fileInputState" 
+          :state="fileInputState"
         >
 
         </b-form-file>
@@ -54,7 +54,7 @@
         <b-input-group class="mt-3" v-if="!loading && !Boolean(image)">
           <b-form-input :state="urlInputState" v-model="url" placeholder="URL to image"></b-form-input>
           <b-input-group-append>
-            <b-btn @click="loadFromURL" class="submit-button">Submit</b-btn>
+            <b-button @click="loadFromURL" class="submit-button">Submit</b-button>
           </b-input-group-append>
         </b-input-group>
       </b-col>
@@ -265,15 +265,15 @@
     <b-row>
       <b-col>
         <b-btn @click="loadExample(1)" class="btn btn-default mr-2">
-          <!-- <i class="fab fa-npm fa-fw"></i> -->
+          <img hidden src="@/assets/images/example-1.jpg" />
           <span class="button-text">Example 1 - Camera</span>
         </b-btn>
         <b-btn @click="loadExample(2)" class="btn btn-default mr-2">
-          <!-- <i class="fab fa-npm fa-fw"></i> -->
+          <img hidden src="@/assets/images/example-2.jpg" />
           <span class="button-text">Example 2 - Drone</span>
         </b-btn>
         <b-btn @click="loadExample(3)" class="btn btn-default mr-2">
-          <!-- <i class="fab fa-npm fa-fw"></i> -->
+          <img hidden src="@/assets/images/example-3.jpg" />
           <span class="button-text">Example 3 - Phone with GPS</span>
         </b-btn>
       </b-col>
@@ -281,111 +281,113 @@
   </b-container>
 </template>
 
-<script>
-import axios from "axios";
-import ImageMeta from "image-meta-js";
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import axios from 'axios'
+import ImageMeta from 'image-meta-js'
 
-export default {
-  name: "Meta",
-  data: function() {
-    return {
-      debug: true,
-      loading: false,
-      metadata: null,
-      image: null,
-      url: '',
+@Component
+export default class Meta extends Vue {
+      debug = true;
+      loading = false;
+      metadata = null;
+      file = null;
+      url = '';
+      image: string | ArrayBuffer | null = null;
 
-      fileInputState: null,
-      urlInputState: null,
-    };
-  },
-  methods: {
-    loadExample(n) {
-      let fileLocation = require(`@/assets/example-${n}.jpg`);
-      this.imageURLToBlob(fileLocation, this.parseMeta);
-    },
-    loadFromURL() {
-      if(this.url.length == 0){
-        this.urlInputState = false;
-        return;
+      fileInputState: boolean | null = null;
+      urlInputState: boolean | null = null;
+
+      loadExample (n: string): void{
+        const fileLocation = require(`@/assets/images/example-${n}.jpg`)
+        this.imageURLToBlob(fileLocation, this.parseMeta)
       }
 
-      this.imageURLToBlob(this.url, this.parseMeta);
-    },
-    loadFromFileInput(event) {
-      let file = event.target.files[0];
-
-      if (!file || !file.type.match(/image.jpeg/)) {
-        alert("Invalid file format");
-        return;
-      }
-
-      this.parseMeta(file);
-    },
-    parseMeta(file) {
-      this.loading = true;
-      let reader = new FileReader();
-
-      reader.readAsArrayBuffer(file);
-      reader.onload = () => {
-        // Lots of type shuffling
-        let arrayBuffer = reader.result;
-        let binary = new DataView(arrayBuffer);
-
-        // Load the image into the library
-        try{
-          let meta = new ImageMeta(binary, this.debug);
-          this.metadata = meta.data();
-        } catch(e) { 
-          // Catch exceptions from the library
-          this.loading = false;
-          alert(e);
-          return;
+      loadFromURL (): void {
+        if (this.url.length === 0) {
+          this.urlInputState = false
+          return
         }
 
-        this.loadImagePreview(file);
-      };
-    },
-    loadImagePreview(image) {
-      let imageReader = new FileReader();
-      imageReader.readAsDataURL(image);
+        this.imageURLToBlob(this.url, this.parseMeta)
+      }
 
-      imageReader.onload = () => {
-        this.image = imageReader.result;
-        this.loading = false; // Cancel loading icon
-      };
-    },
-    reset() {
-      this.metadata = null;
-      this.image = null;
-      this.file = null;
-      this.url = '';
-      this.fileInputState = null;
-      this.urlInputState = null;
-    },
-    imageURLToBlob(url, callback) {
+      loadFromFileInput (event: Event): void{
+        const file = (event.target as HTMLInputElement).files as FileList
 
-      axios
-        .get(url, {
-          responseType: "blob"
-        })
-        .then(response => {
-          callback(response.data);
-        })
-        .catch(err => {
-            if(err.request.status == 404) {
+        if (!file[0] || !file[0].type.match(/image.jpeg/)) {
+          alert('Invalid file format')
+          return
+        }
+
+        this.parseMeta(file[0])
+      }
+
+      parseMeta (file: Blob): void{
+        this.loading = true
+        const reader = new FileReader()
+
+        reader.readAsArrayBuffer(file)
+        reader.onload = () => {
+        // Lots of type shuffling
+          const arrayBuffer = reader.result as ArrayBufferLike
+
+          const binary = new DataView(arrayBuffer)
+
+          // Load the image into the library
+          try {
+            const meta = new ImageMeta(binary, this.debug)
+            this.metadata = meta.data()
+          } catch (e) {
+          // Catch exceptions from the library
+            this.loading = false
+            alert(e)
+            return
+          }
+
+          this.loadImagePreview(file)
+        }
+      }
+
+      loadImagePreview (image: Blob): void{
+        const imageReader = new FileReader()
+        imageReader.readAsDataURL(image)
+
+        imageReader.onload = () => {
+          this.image = imageReader.result
+          this.loading = false // Cancel loading icon
+        }
+      }
+
+      reset (): void{
+        this.metadata = null
+        this.image = null
+        this.file = null
+        this.url = ''
+        this.fileInputState = null
+        this.urlInputState = null
+      }
+
+      imageURLToBlob (url: string, callback: (f: Blob) => void): void{
+        axios
+          .get(url, {
+            responseType: 'blob'
+          })
+          .then(response => {
+            callback(response.data)
+          })
+          .catch(err => {
+            if (err.request.status === 404) {
               alert('404: Not found - please check the URL is correct and try again')
-              return;
             } else {
-              alert('There has been an error fetching the image');
+              alert('There has been an error fetching the image')
             }
-        });
-    },
-  },
-};
+          })
+      }
+}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 img {
   max-width: 60%;
 }

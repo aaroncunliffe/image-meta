@@ -1,0 +1,12 @@
+name = ""
+account_id = ""
+type = "webpack"
+workers_dev = false
+
+[env.production]
+    zone_id = ""
+    route = ""
+
+[site]
+    bucket = "dist"
+    entry-point = "workers-site"
